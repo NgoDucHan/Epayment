@@ -1,0 +1,30 @@
+<div class="row">
+    <div class="col-md-12">
+        <form action="{{ url_for('login') }}" method="post">
+            <div class="container">
+
+                <div class="card shadow col-md-4 mr-auto ml-auto">
+                    <div class="card-body">
+                        <h1 class="text-info text-center">LOGIN</h1>
+                        <h6 class="text-center text-dark">Login System with Admin permission</h6></br>
+                        <div>
+                            <input type="text" name="username" class="form-control" placeholder="Username" required/> </br>
+                        </div>
+                        <div>
+                            <input type="password" name="password" class="form-control" placeholder="Password" required/> </br>
+                        </div>
+                        <div class="col-5 ml-auto">
+                            <input type="submit" value="Login" class="col-md-4 btn btn-primary"/>|
+                            <input type="button" class="btn btn-danger" href="{{ url_for('index') }}" value="Turn Back"/>
+                        </div>
+                        {% if errmsg %}
+                            <div>
+                                <p><h6 class="text-danger text-center">{{ errmsg }}</h6></p>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

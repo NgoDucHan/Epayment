@@ -43,7 +43,7 @@
 
 <main class="login-body" data-vide-bg="{{ url_for('static', filename='assets/img/login-bg.mp4') }}">
     <!-- Login Admin -->
-    <form class="form-default" action="login-bg.mp4" method="POST">
+    <form class="form-default" action="{{ url_for('login') }}" method="POST">
         
         <div class="login-form">
             <!-- logo-login -->
@@ -52,8 +52,8 @@
             </div>
             <h2>Login Here</h2>
             <div class="form-input">
-                <label for="name">Email</label>
-                <input  type="email" name="email" placeholder="Email" required>
+                <label for="name">Username</label>
+                <input  type="text" name="username" placeholder="Username" required>
             </div>
             <div class="form-input">
                 <label for="name">Password</label>
@@ -62,6 +62,12 @@
             <div class="form-input pt-30">
                 <input type="submit" name="submit" value="login">
             </div>
+
+            {% if errmsg %}
+                <div>
+                    <p><h6 class="text-danger text-center">{{ errmsg }}</h6></p>
+                </div>
+            {% endif %}
             
             <!-- Forget Password -->
             <a href="#" class="forget">Forget Password</a>

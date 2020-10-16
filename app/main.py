@@ -18,9 +18,32 @@ def index():
     return render_template("index.html")
 
 
-@app.route("/login")
+@app.route("/login", methods=['get', 'post'])
 def login():
+    errmsg = ""
+    if request.method == 'POST':
+        username = request.form.get("username")
+        password = request.form.get("password")
+        password = str(hashlib.md5(password.strip().encode("utf-8")).hexdigest())
+        account = dao.validate_account(username.strip(), password)
+        if account and account.account_type == AccountType.ADMIN:
+            login_user(user=account)
+            return redirect("/admin")
+        else:
+            if account and (account.account_type == AccountType.USER or account.account_type == AccountType.BUSINESS):
+                login_user(user=account)
+                return redirect("/")
+            else:
+                errmsg = "Username or password is incorrect!"
+                return render_template("login.html", errmsg=errmsg)
     return render_template("login.html")
+
+
+@app.route("/logout")
+@login_required
+def logout():
+    logout_user()
+    return redirect("/login")
 
 
 @app.route("/register")
@@ -31,6 +54,16 @@ def register():
 @app.route("/ex")
 def example():
     return render_template("example.html")
+
+
+@app.context_processor
+def common_data():
+    return {
+        'gender': Gender,
+        'account_type': AccountType,
+        'activity_type': ActivityType,
+        'transaction_type': TransactionType
+    }
 
 
 if __name__ == '__main__':

@@ -5,11 +5,11 @@ from flask_admin import Admin
 from app.models import *
 
 
-def validate_user(username, password):
-    user = User.query.filter(User.username == username,
-                             User.password == password).first()
-    return user
+def validate_account(username, password):
+    account = Account.query.filter(Account.username == username,
+                                   Account.password == password).first()
+    return account
 
 
-def load(user_id):
-    return User.query.get(user_id)
+def load(account_id):
+    return Account.query.get(account_id)

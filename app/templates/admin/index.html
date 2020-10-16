@@ -1,0 +1,14 @@
+{% extends 'admin/master.html' %}
+
+{% block body %}
+    {% if current_user.is_authenticated and current_user.account_type == account_type.ADMIN %}
+        <h1 class="text-center container-fluid">Wellcome <span class="text-success">{{ current_user.name }}</span> to Admin page!!!</h1>
+    {% else %}
+        {% if current_user.account_type == account_type.USER or current_user.account_type == account_type.BUSINESS %}
+            <h1 class="text-center text-danger">WARNING: User {{ current_user.name }} is not allowed to visit Admin page!!!</h1>
+            <a href="{{ url_for('index') }}" class="text-center"><h3>Click here to return to Index page!</h3></a>
+        {% else %}
+            {% include 'admin/login.html' %}
+        {% endif %}
+    {% endif %}
+{% endblock %}

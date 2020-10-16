@@ -70,8 +70,13 @@
                                                 </li>
                                                 <li><a href="contact.html">Contact</a></li>
                                                 <!-- Button -->
+                                                {% if current_user.is_authenticated %}
+                                                <li class="button-header margin-left"><a href="#" class="btn3">Wellcome {{ current_user.name }}</a></li>
+                                                <li class="button-header"><a href="{{ url_for('logout') }}" class="btn">Log Out</a></li>
+                                                {% else %}
                                                 <li class="button-header margin-left "><a href="{{ url_for('register') }}" class="btn">Sign Up</a></li>
                                                 <li class="button-header"><a href="{{ url_for('login') }}" class="btn3">Sign In</a></li>
+                                                {% endif %}
                                             </ul>
                                         </nav>
                                     </div>

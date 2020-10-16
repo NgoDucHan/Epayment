@@ -21,7 +21,7 @@ class AuthenticatedBaseView(BaseView):
         return current_user.is_authenticated
 
 
-class AccountView(ModelView):
+class AccountView(AuthenticatedView):
     column_display_pk = True
     can_create = True
     can_delete = True
@@ -29,7 +29,7 @@ class AccountView(ModelView):
     can_export = True
 
 
-class DetailAccountView(ModelView):
+class DetailAccountView(AuthenticatedView):
     column_display_pk = True
     can_create = False
     can_delete = False
@@ -37,7 +37,7 @@ class DetailAccountView(ModelView):
     can_export = True
 
 
-class WalletView(ModelView):
+class WalletView(AuthenticatedView):
     column_display_pk = True
     can_create = False
     can_delete = False
@@ -45,7 +45,7 @@ class WalletView(ModelView):
     can_export = True
 
 
-class ActivityLogView(ModelView):
+class ActivityLogView(AuthenticatedView):
     column_display_pk = True
     can_create = False
     can_delete = False
@@ -53,7 +53,7 @@ class ActivityLogView(ModelView):
     can_export = True
 
 
-class TransactionSlipView(ModelView):
+class TransactionSlipView(AuthenticatedView):
     column_display_pk = True
     can_create = False
     can_delete = False
