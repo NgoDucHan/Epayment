@@ -93,7 +93,6 @@
         </div>
         <!-- Header End -->
     </header>
-    {% block body %}
     <main>
         <!-- Slider Area Start-->
         <div class="slider-area slider-bg ">
@@ -104,6 +103,7 @@
                         <div class="row align-items-center justify-content-between">
                             <div class="col-xl-5 col-lg-5 col-md-9 ">
                                 <div class="hero__caption">
+                                    {% block body %}
                                     <span data-animation="fadeInLeft" data-delay=".3s">Best Domain & hosting service provider</span>
                                     <h1 data-animation="fadeInLeft" data-delay=".6s ">Powerful web hosting</h1>
                                     <p data-animation="fadeInLeft" data-delay=".8s">Supercharge your WordPress hosting with detailed 
@@ -114,6 +114,7 @@
                                         <!-- Hero-btn -->
                                         <a data-animation="fadeInLeft" data-delay="1s" href="industries.html" class="btn radius-btn">get started</a>
                                     </div>
+                                    {% endblock %}
                                 </div>
                             </div>
                             <div class="col-xl-6 col-lg-6">
@@ -540,7 +541,7 @@
     </section>
     <!--? Testimonial Area End -->
 </main>
-    {% endblock %}
+
 <footer>
     <div class="footer-wrappr " data-background="assets/img/gallery/footer-bg.png">
         <div class="footer-area footer-padding ">

@@ -59,15 +59,15 @@
                 <label for="name">Password</label>
                 <input type="password" name="password" placeholder="Password" required>
             </div>
+            {% if errmsg %}
+                <div>
+                    <p><h3 class="text-danger text-center">{{ errmsg }}</h3></p>
+                </div>
+            {% endif %}
             <div class="form-input pt-30">
                 <input type="submit" name="submit" value="login">
             </div>
 
-            {% if errmsg %}
-                <div>
-                    <p><h6 class="text-danger text-center">{{ errmsg }}</h6></p>
-                </div>
-            {% endif %}
             
             <!-- Forget Password -->
             <a href="#" class="forget">Forget Password</a>

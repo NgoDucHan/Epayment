@@ -1,0 +1,23 @@
+{% extends 'index.html' %}
+
+{% block body %}
+    <main>
+        <h1 data-animation="fadeInLeft" data-delay=".6s ">Payment Here</h1>
+        <form method="post" action="{{ url_for('payment_total')}}">
+            <div class="form-input">
+                <label for="amount">Amount</label>
+                <input  type="text" name="amount" placeholder="Amount" required>
+            </div>
+<!--            <h1 data-animation="fadeInLeft" data-delay=".6s ">Powerful web hosting</h1>-->
+            {% if req %}
+                <p data-animation="fadeInLeft" data-delay=".8s">{{ req }}</p>
+
+            {% endif %}
+            <!-- Slider btn -->
+            <div class="slider-btns">
+                <!-- Hero-btn -->
+                <input data-animation="fadeInLeft" data-delay="1s" type="submit" value="Submit" class="btn radius-btn"/>
+            </div>
+        </form>
+    </main>
+{% endblock %}

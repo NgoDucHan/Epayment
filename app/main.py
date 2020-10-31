@@ -1,4 +1,4 @@
-from app import app, login, dao, models
+from app import app, login, models, dao, momo_api
 from flask_login import login_user, logout_user, login_required
 from flask import render_template, request, redirect, url_for, jsonify
 from flask_paginate import Pagination, get_page_args
@@ -44,6 +44,15 @@ def login():
 def logout():
     logout_user()
     return redirect("/login")
+
+
+@app.route("/payment", methods=['get', 'post'])
+def payment_total():
+    total = request.form.get("amount")
+    req = None
+    if total:
+        req = momo_api.CreateOrderByMomo(total=total)
+    return render_template("payment.html", req=req)
 
 
 @app.route("/register")
