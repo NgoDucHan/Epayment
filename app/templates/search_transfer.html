@@ -1,0 +1,36 @@
+{% extends 'index.html' %}
+
+{% block body %}
+    <main>
+        <h1 data-animation="fadeInLeft" data-delay=".6s ">Search Other Here</h1>
+        <form>
+            <div class="form-input input-group mb-3">
+                  <input type="text" class="form-control" name="name" placeholder="Search by Name">
+                  <div class="input-group-append">
+                    <button class="btn-success" type="submit">Go</button>
+                  </div>
+            </div>
+        </form>
+        {% if accounts %}
+            {% for acc in accounts %}
+                {% if acc.id != current_user.id %}
+                <table class="container table table-hover mr-auto ml-auto">
+                    <tr>
+                        <th class="text-center">ID:</th>
+                        <td>{{ acc.id }} <td colspan="2" class="text-center"><a href="{{ url_for('transfer', account_id = acc.id )}}">Transfer</a></td>
+                    </tr>
+                    <tr>
+                        <th class="text-center">Name:</th>
+                        <td>{{ acc.name }}</td>
+                    </tr>
+                </table>
+                {% endif %}
+            {% endfor %}
+        {% else %}
+            {% if errmsg %}
+                <span class="text-danger" data-animation="fadeInLeft" data-delay=".3s">{{ errmsg }}</span>
+            {% endif %}
+        {% endif %}
+
+    </main>
+{% endblock %}

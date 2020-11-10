@@ -22,8 +22,14 @@ class ActivityType(enum.Enum):
     WITHDRAW = 1
     DEPOSIT = 2
     TRANSFER = 3
+
     OPEN_WALLET = 4
-    CLOSE_WALLET = 5
+    DISABLE_WALLET = 5
+    UPDATE_WALLET = 6
+
+    CREATE_ACC = 7
+    DISABLE_ACC = 8
+    UPDATE_ACC = 9
 
 
 class TransactionType(enum.Enum):

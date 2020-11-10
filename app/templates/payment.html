@@ -10,7 +10,8 @@
             </div>
 <!--            <h1 data-animation="fadeInLeft" data-delay=".6s ">Powerful web hosting</h1>-->
             {% if req %}
-                <p data-animation="fadeInLeft" data-delay=".8s">{{ req }}</p>
+                <p data-animation="fadeInLeft" data-delay=".8s">{{ req['message'] }}</p>
+                <p data-animation="fadeInLeft" data-delay=".8s">Detail: {{ req }}</p>
 
             {% endif %}
             <!-- Slider btn -->

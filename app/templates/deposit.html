@@ -1,0 +1,30 @@
+{% extends 'index.html' %}
+
+{% block body %}
+    <main>
+        <h1 data-animation="fadeInLeft" data-delay=".6s ">Deposit Here</h1>
+        <form method="post" action="{{ url_for('deposit')}}">
+            <div class="form-input">
+<!--                <label for="amount">Amount</label>-->
+                <input class="form-control" type="text" name="amount" placeholder="Amount" required>
+                <input class="form-control" type="password" name="password" placeholder="Confirm password" required>
+                <br/>
+            </div>
+<!--            <h1 data-animation="fadeInLeft" data-delay=".6s ">Powerful web hosting</h1>-->
+            {% if req %}
+                <p class="text-success" data-animation="fadeInLeft" data-delay=".8s">Notification: {{ req['message'] }}</p>
+            {% endif %}
+            {% if wallet %}
+                <p data-animation="fadeInLeft" data-delay=".8s">Balance Amount: {{ wallet.balance_amount }}</p>
+            {% endif %}
+            {% if errmsg %}
+                <p data-animation="fadeInLeft" data-delay=".8s">{{ errmsg }}</p>
+            {% endif %}
+            <!-- Slider btn -->
+            <div class="slider-btns">
+                <!-- Hero-btn -->
+                <input data-animation="fadeInRight" data-delay="1s" type="submit" value="Submit" class="btn radius-btn"/>
+            </div>
+        </form>
+    </main>
+{% endblock %}

@@ -5,24 +5,15 @@ import hmac
 import hashlib
 
 
-# def CreateOrderReq(total):
-#     data = {
-#         'total': total
-#     }
-#     return data
-
-
-# def CreateOrderByMomo(req: CreateOrderReq):
 def CreateOrderByMomo(total):
-    endpoint = "https://payment.momo.vn/gw_payment/transactionProcessor"
-    partnerCode = "MOMOEQ4F20201024"  # busssiness momo
-    accessKey = "6UJmuB7yc8rrMah4"  # busssiness momo
-    serectkey = "0S9J1b5u1eJtTUFEOVlYxOkIMmrQW70c"  # busssiness momo
-    orderInfo = "pay with MoMo"  # hieenj lên thông tin info
+    endpoint = "https://test-payment.momo.vn/gw_payment/transactionProcessor"
+    partnerCode = "MOMOBKUN20180529" #"MOMOEQ4F20201024"  # busssiness momo
+    accessKey = "klm05TvNBzhg7h7j" #"6UJmuB7yc8rrMah4"  # busssiness momo
+    serectkey = "at67qH6mk8w5Y1nAyMoYKMWACiEi2bsa" #"0S9J1b5u1eJtTUFEOVlYxOkIMmrQW70c"  # busssiness momo
+    orderInfo = "pay with MoMo"  # thông tin về order
     returnUrl = "http://localhost:5000/payment"  # redicrect sau đi hoàn tất thanh toán
     notifyUrl = "http://localhost:5000/"
-    # amount = str(req.total)  # Số tiền của hóa đơn
-    amount = str(total)
+    amount = str(total)  # Số tiền của hóa đơn
     orderId = str(uuid.uuid4())  # order id của momo chứ ko phải của chúng ta
     requestId = str(uuid.uuid4())  # như trên
     requestType = "captureMoMoWallet"
@@ -55,3 +46,7 @@ def CreateOrderByMomo(total):
     response = f.read()
     f.close()
     return json.loads(response)
+
+
+def RefundOrder(total):
+    pass
