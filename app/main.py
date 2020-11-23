@@ -80,9 +80,10 @@ def transfer():
     sucmsg = ""
     wallet = None
     account_id = request.args.get("account_id")
+    account_name = request.args.get("account_name")
     id = request.form.get("account_id")
 
-    account = dao.get_account_by_id(account_id=account_id)
+    # account = None
     if request.method == 'POST':
         amount = request.form.get("amount")
         frag = float(amount)
@@ -91,7 +92,7 @@ def transfer():
         password = str(hashlib.md5(password.strip().encode("utf-8")).hexdigest())
 
         account_id = request.args.get("account_id")
-        account = dao.get_account_by_id(account_id=account_id)
+        account = dao.get_account_by_id(account_id=id)
 
         if password == current_user.password:
             if amount:
@@ -108,7 +109,8 @@ def transfer():
                     errmsg = "Amount must be more than 1000!"
         else:
             errmsg = "Password is incorrect!"
-    return render_template("transfer.html", sucmsg=sucmsg, wallet=wallet, errmsg=errmsg, account_id=account_id)
+    return render_template("transfer.html", sucmsg=sucmsg, wallet=wallet,
+                           errmsg=errmsg, account_id=account_id, account_name=account_name)
 
 
 @app.route("/transaction/withdraw", methods=['get', 'post'])

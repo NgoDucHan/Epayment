@@ -6,7 +6,10 @@
         <form method="post" action="{{ url_for('transfer')}}">
             <div class="form-input">
                 <input readonly class="form-control" type="text" name="account_id" value="{{ account_id }}">
-                <input class="form-control" type="text" name="amount" placeholder="Amount" required>
+
+                <input readonly class="form-control" type="text" name="account_name" value="{{ account_name }}">
+
+                <input class="form-control" type="text" name="amount" placeholder="Amount to transfer" required>
                 <input class="form-control" type="password" name="password" placeholder="Confirm password" required>
                 <br/>
             </div>
@@ -14,7 +17,7 @@
                 <p class="text-success" data-animation="fadeInLeft" data-delay=".8s">{{ sucmsg }}</p>
             {% endif %}
             {% if wallet %}
-                <p data-animation="fadeInLeft" data-delay=".8s">Balance Amount: {{ wallet.balance_amount }}</p>
+                <p data-animation="fadeInLeft" data-delay=".8s">Your Balance Amount: {{ wallet.balance_amount }}</p>
             {% endif %}
             {% if errmsg %}
                 <p class="text-danger" data-animation="fadeInLeft" data-delay=".8s">{{ errmsg }}</p>

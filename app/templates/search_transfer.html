@@ -16,12 +16,12 @@
                 {% if acc.id != current_user.id %}
                 <table class="container table table-hover mr-auto ml-auto">
                     <tr>
-                        <th class="text-center">ID:</th>
-                        <td>{{ acc.id }} <td colspan="2" class="text-center"><a href="{{ url_for('transfer', account_id = acc.id )}}">Transfer</a></td>
+                        <th class="text-light text-center">ID:</th>
+                        <td class="text-light">{{ acc.id }} <td colspan="2" class="text-lighttext-center"><a href="{{ url_for('transfer', account_id = acc.id, account_name = acc.name )}}">Transfer</a></td>
                     </tr>
                     <tr>
-                        <th class="text-center">Name:</th>
-                        <td>{{ acc.name }}</td>
+                        <th class="text-light text-center">Name:</th>
+                        <td class="text-light">{{ acc.name }}</td>
                     </tr>
                 </table>
                 {% endif %}
